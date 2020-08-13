@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Ontefetse Ditsele
  * 
@@ -7,8 +5,8 @@ import java.util.ArrayList;
 
 public interface UberEatsResturant {
 
-
-    public ArrayList<Dish> getSignatureDishes();
+    //Methods that have to be Overriden by any Uber Eats Resturant.
+    public Dish[] getSignatureDishes();
     public String getLocation();
     public String getName(); 
 
