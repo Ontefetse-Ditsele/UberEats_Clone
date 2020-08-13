@@ -9,9 +9,7 @@ public class Restaurant implements UberEatsResturant {
     private String name;
     private Dish[] signatureDishes;
     private String location;
-
-    //Ideal a hash map to have cd 
-    private ArrayList<Dish> cart; 
+ 
     private Customer client;
     
     public Restaurant(String name, Dish[] sigDishes,String location){
@@ -25,7 +23,7 @@ public class Restaurant implements UberEatsResturant {
         this.client = client;
     }
 
-    // Implemtented Methods
+    // Implemtented Methods To be a Uber Eats Resturant.
     @Override
     public Dish[] getSignatureDishes() {
         return this.signatureDishes;
@@ -41,29 +39,24 @@ public class Restaurant implements UberEatsResturant {
         return this.name;
     }
     //Class Methods
-    //This fuction will be in Customer, thus might remove it
-    public void addDish(Dish d) {
-        this.cart.add(d);
+    public ArrayList<Dish> getOrderedCart(){
+        return this.cart;
     }
-    public void removeDish(Dish d) {
-        this.cart.remove(d);
-    }
-    .
-    public void displayCart(){
-        for (Dish d : this.cart){
-            System.out.println(d);
-        }
-    }
+
     public void checkout(){
+        
         /*
         * assing a delivry boy .Driver delivery_boy = new Driver()
         */
-        Driver delivery_boy = new Driver("John","Doe","johndoe@hotmail.com",7000,this.location, client.getAddress());
-        /* process payment, 
-            - charge the customer, pay the driver & update account.
-        *display the basket
-        *& give an E.T.A
-        */
+        Bike B =  Bike("numberPlate", "color", "model","location");
+        Driver delivery_boy = new Driver(B,"licenseId","John","Doe","065 789 4433",7000);
+        //Driver(Bike bike, String licenseID, String name, String surname,String phone_number, int cash)
+        
+
+        delivery_boy.setPickUp(this.locaton);
+        delivery_boy.setDropOff(client.getAddress());
+
+
     
     }
 }

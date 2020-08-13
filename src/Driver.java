@@ -1,10 +1,10 @@
 public class Driver extends Person {
-    Bike bike; 
-    String licenseID;
-    String pickUp;
-    String dropOff;
+    private Bike bike; 
+    private String licenseID;
+    private String pickUp;
+    private String dropOff;
     
-    Driver(Bike bike, String licenseID, String name, String surname,String phone_number, int cash){
+    public Driver(Bike bike, String licenseID, String name, String surname,String phone_number, int cash){
         super(name,surname,phone_number,cash);
         this.bike = bike;
         this.licenseID = licenseID;    
