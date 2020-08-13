@@ -1,9 +1,18 @@
+/**
+ * Ontefetse Ditsele
+ * 13 August 2020
+ *
+ * The Driver Class for the Mobile App
+*/
+import java.util.Scanner;
+
 public class UberEatsMobileApp {
 
     /**
      * This is the main function that runs when I run the file after compiling.
      */
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in));
         System.out.println("Welcome to UberEatsApp - signature dish edition\n");
 
         System.out.println("Select location to load restaruants. Options are rondebosch, kenilworth, seapoint or all\n");

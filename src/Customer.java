@@ -10,10 +10,12 @@ import java.util.ArrayList;
 
 public class Customer extends Person{
     private ArrayList<Dish> Order;
+    private String address;
 
-    public Customer(String name, String surname, String phone_num, double cash) {
+    public Customer(String name, String surname, String phone_num,String location, double cash) {
         super(name, surname, phone_num, cash);
         Order = new ArrayList<Dish>();
+        this.address = location;
     }
 
     //################################################################
@@ -29,7 +31,9 @@ public class Customer extends Person{
         return Order;
     }
     //###########################################################
-
+    public String getAddress(){
+        return this.address;
+    }
     @Override
     public String toString(){
         return super.toString() + " I am a Customer.";

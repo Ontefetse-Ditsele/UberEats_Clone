@@ -9,17 +9,17 @@ import java.util.ArrayList;
  */
 
 public class Database {
-    ArrayList<Restaurant> resList;
+    private ArrayList<Restaurant> resList;
     
     //Instance Variables
     private BufferedReader read;
     private FileWriter write;
 
     public Database(){  
-            resList = new ArrayList<Restaurant>();
+            this.resList = new ArrayList<Restaurant>();
        }
 
-    public void readRestaurants(){
+    public void readRestaurants() throws IOException{
         try {
             read = new BufferedReader(new FileReader("../bin/restos.csv"));
             String line; Dish[] sigD = new Dish[3];
@@ -28,27 +28,35 @@ public class Database {
             while((line = read.readLine()) != null){
                 data = line.split(",");
                 for(int i = 1; i < 6;i+=2){
-                    sigD[z] = new Dish(data[i],data[i+1]);
+                    sigD[z] = new Dish(data[i],Integer.parseInt(data[i+1]));
                     z++;
                 }
                 Restaurant r = new Restaurant(data[0], sigD, data[7]);
                 this.resList.add(r);
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error to " + e.getMessage());
+        }finally{
+         read.close();
         }
     }
-    public void writeOrder(){
-        this.write = new FileWriter(this.swipes, true);
-        for (Restaurant r : resList()){
+    public void writeOrder() throws IOException{
+      try{
+        this.write = new FileWriter("../bin/orders.csv",true);
+        for (Restaurant r : this.resList){
             write.write("name, itemsOrdered, location\n");
             for(Dish d : r.getOrderedCart()){
-                write.write(r.getName());
-                write.write(d.getName());
-                write.write(r.getLocation());
-                write.write("\n");
+                write.write(r.getName() + ",");
+                write.write(d.getName() + ",");
+                write.write(r.getLocation()+"\n");
             }        
         }
+    }catch(IOException e){
+      System.out.println("Error "+ e.getMessage());
     }
+    finally{
+      write.close();
+    }
+   }
 }
