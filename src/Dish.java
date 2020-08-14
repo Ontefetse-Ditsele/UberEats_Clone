@@ -23,6 +23,6 @@ public class Dish {
 
     @Override
     public String toString(){
-        return this.name + "  Price:" +this.cost;
+        return this.name + "  Worth " +this.cost;
     }
 }

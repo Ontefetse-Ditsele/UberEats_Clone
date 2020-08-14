@@ -17,53 +17,49 @@ public class Restaurant implements UberEatsResturant {
     public Restaurant(String name, Dish[] sigDishes,String location){
         this.name = name;
         this.signatureDishes = sigDishes;
-        //this.cart = new ArrayList<Dish>();
         this.location = location;
          this.cost = 0.95;
-
-
     }
     public void setClient(Customer client) {
         this.client = client;
     }
-
-    // Implemtented Methods To be a Uber Eats Resturant.
-    @Override
-    public Dish[] getSignatureDishes() {
-        return this.signatureDishes;
+    public double getCost() {
+        return this.cost;
     }
-
+    // Implemtented METHODS To be a Uber Eats Resturant.
     @Override
-    public String getLocation() {
-        return this.location;
-    }
+    public Dish[] getSignatureDishes() {  return this.signatureDishes;    }
 
     @Override
-    public String getName() {
-        return this.name;
-    }
+    public String getLocation() {    return this.location;   }
+
+    @Override
+    public String getName() {   return this.name;   }
+    
     //Class Methods
+    public void displayMenu() {
+        for (int i = 1; i < 4; i++){
+            System.out.println(i+".  "+ signatureDishes[i-1]);
+        }
+    }
     public ArrayList<Dish> getOrderedCart(){
         return client.getOrder();
     }
+    public void calculateCost (){
+        for(Dish d : client.getOrder()){
+        this.cost += d.getCost();
+        }
+    }
 
     public void checkout(){
-        //Creating a Driver to ....
-        Bike B =  new Bike("numberPlate", "color", "model","location");
-        Driver delivery_boy = new Driver(B,"licenseId","John","Doe","065 789 4433",7000);
-        
-        
+        int fee = 50;
+        Driver delivery_boy = new Driver("licenseId","John","Doe","065 789 4433",7000);
         delivery_boy.setPickUp(this.location);
         delivery_boy.setDropOff(client.getAddress());
-        //double cost = calculateCost();
+        
         client.setCash(client.getCash() - this.cost);
-        this.Account += this.cost;
-        int fee = 10;
+        this.Account += this.cost - fee; //R 50 Delivery Fee        
         delivery_boy.setCash(7000 + fee);    
-    }
-    public void calculateCost (){
-               for(Dish d : client.getOrder()){
-            this.cost += d.getCost();
-        }
+        System.out.println(delivery_boy);
     }
 }

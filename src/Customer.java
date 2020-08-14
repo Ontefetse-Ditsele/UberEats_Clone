@@ -1,5 +1,3 @@
-import java.net.PortUnreachableException;
-
 /**
  * Ontefetse Ditsele
  * 13 August 2020
@@ -23,12 +21,17 @@ public class Customer extends Person{
         Order.add(d);
     }
     public void displayOrder(){
+        int n = 1;
         for (Dish d: Order){
-            System.out.println(d);
+            System.out.println(n+". -  "+ d);
+            n++;
         }
     }
     public ArrayList<Dish> getOrder(){
         return Order;
+    }
+    public void removeDish(int index){
+        Order.remove(index);
     }
     //###########################################################
     public String getAddress(){
