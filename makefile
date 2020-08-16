@@ -26,7 +26,7 @@ vpath %.class $(BINDIR)
 .java.class:
 	$(JAVAC) $(JFLAGS) $<
 
-classes: Person.class Vehicle.class Bike.class Dish.class Customer.class Driver.class Database.class \
+classes: Person.class Dish.class Customer.class Driver.class Database.class \
 		UberEatsResturant.class Restaurant.class UberEatsMobileApp.class UberEatsRestaurantApp.class
 
 default: $(CLASSES)
@@ -34,16 +34,12 @@ default: $(CLASSES)
 doc:
 	javadoc -d $(DOCDIR) -cp $(DOCDIR) $(SRCDIR)/*.java
 
-test_classes: Person.class Vehicle.class Bike.class Dish.class Customer.class Driver.class Database.class \
+test_classes: Person.class Dish.class Customer.class Driver.class Database.class \
 			UberEatsResturant.class Restaurant.class UberEatsMobileApp.class UberEatsRestaurantApp.class	      
 
 junit: test_classes
 	
 Person.class: Person.java
-	javac -d $(BINDIR) -cp $(JUNIT)
-Vehicle.class: Vehicle.java
-	javac -d $(BINDIR) -cp $(JUNIT)
-Bike.class: Bike.java
 	javac -d $(BINDIR) -cp $(JUNIT)
 Dish.class: Dish.java
 	javac -d $(BINDIR) -cp $(JUNIT)
@@ -65,4 +61,3 @@ UberEatsRestaurantApp.class: UberEatsRestaurantApp.java
 
 clean:
 	rm -f  $(BINDIR)/*.class
-	rm -Rf doc

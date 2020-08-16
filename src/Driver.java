@@ -25,6 +25,6 @@ public class Driver extends Person {
 
     @Override
     public String toString(){
-        return super.toString() +"Pick up:"+ this.pickUp +"" +this.dropOff;
+        return super.toString() +" | pick Up: "+ this.pickUp +" delivery address : " +this.dropOff;
     }
 }
