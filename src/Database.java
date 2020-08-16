@@ -21,11 +21,12 @@ public class Database {
         try {
             String path = "C:\\Users\\connex\\OneDrive\\Desktop\\Zaio_deliverables\\UberEats_Clone\\bin\\restos.csv";
             BufferedReader read = new BufferedReader(new FileReader(path));
-            String line;String[] data; Dish[] sigD = new Dish[3];
+            String line;String[] data; 
             
             read.readLine();
             while((line = read.readLine()) != null){
                 data = line.split(", ");
+                Dish[] sigD = new Dish[3];
                 sigD[0] = new Dish(data[1],Integer.parseInt(data[2]));
                 sigD[1] = new Dish(data[3],Integer.parseInt(data[4]));
                 sigD[2] = new Dish(data[5],Integer.parseInt(data[6]));
@@ -75,14 +76,14 @@ public class Database {
         try{
             String pathO = "C:\\Users\\connex\\OneDrive\\Desktop\\Zaio_deliverables\\UberEats_Clone\\bin\\orders.csv";
             BufferedReader read = new BufferedReader(new FileReader(pathO));
-            String line;String[] data; String[] items;
+            String line;String[] data; 
             
             read.readLine();
             while((line = read.readLine()) != null){
                 data = line.split(", ");
                 
                 if(name.equals(data[0])){
-                    items = data[1].split(";");
+                    String[] items = data[1].split(";");
                     for (String item :items){
                         System.out.println(item + " from "+data[2]);
                     }
